@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+I<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -59,6 +59,45 @@
 <footer>
   <p>&copy; 2026 Usman OneTech All Rights Reserved.</p>
 </footer>
+<!-- Chatbase Script -->
+  <script>
+  (function(){
+    if(!window.chatbase || window.chatbase("getState") !== "initialized"){
+      window.chatbase = (...arguments) => {
+        if(!window.chatbase.q){ window.chatbase.q = [] }
+        window.chatbase.q.push(arguments)
+      };
+      window.chatbase = new Proxy(window.chatbase, {
+        get(target, prop){
+          if(prop === "q"){ return target.q }
+          return (...args) => target(prop, ...args)
+        }
+      })
+    }
+    const onLoad = function(){
+      const script = document.createElement("script");
+      script.src = "https://www.chatbase.co/embed.min.js";
+      script.id = "_ym0GFkf6Wg6GUmdgEUMV";
+      script.domain = "www.chatbase.co";
+      document.body.appendChild(script)
+    };
+    if(document.readyState === "complete"){
+      onLoad()
+    } else {
+      window.addEventListener("load", onLoad)
+    }
+  })();
+  </script>
+
+  <!-- Robot Click Script -->
+  <script>
+  document.querySelector(".robot-icon").addEventListener("click", function(){
+    if(window.chatbase){
+      window.chatbase("open");
+    }
+  });
+  </script>
+
 
 </body>
   </html>
